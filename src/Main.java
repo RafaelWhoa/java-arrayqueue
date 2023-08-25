@@ -11,6 +11,7 @@ public class Main {
         for (Object num: backingArray.getBackingArray()){
             System.out.println(num);
         }
+        System.out.println("Size: " + backingArray.size());
     }
 
 

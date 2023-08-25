@@ -48,7 +48,7 @@ public class ArrayQueue<T> {
             addToBack(data);
         }
         else {
-            throw new IllegalArgumentException("Error: Data must not be null value!");
+            throw new IllegalArgumentException("Error: Invalid data. Data must not be null value!");
         }
 
     }
@@ -84,13 +84,12 @@ public class ArrayQueue<T> {
         if (size == backingArray.length){
             T[] newArray = (T[]) new Object[size * 2];
             for (int i = 0; i < size - 1; i++){
-                newArray[i] = backingArray[i];
+                newArray[i] = backingArray[(front + size) % backingArray.length];
             }
-            newArray[front + size] = data;
-            size++;
             backingArray = newArray;
+            front = 0;
         }
-        backingArray[front + size] = data;
+        backingArray[(front + size) % backingArray.length] = data;
         size++;
     }
 
