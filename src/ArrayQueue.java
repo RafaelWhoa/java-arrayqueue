@@ -44,7 +44,6 @@ public class ArrayQueue<T> {
      */
     public void enqueue(T data) {
         if (data != null){
-            front = 0;
             addToBack(data);
         }
         else {
@@ -77,6 +76,10 @@ public class ArrayQueue<T> {
         }
     }
 
+    /**
+     * Removes element from array front position
+     * @return removed element
+     */
     private T removeFromFront(){
         T elementToRemove = backingArray[front];
         backingArray[front] = null;
@@ -95,8 +98,8 @@ public class ArrayQueue<T> {
     private void addToBack(T data){
         if (size == backingArray.length){
             T[] newArray = (T[]) new Object[size * 2];
-            for (int i = 0; i < size - 1; i++){
-                newArray[i] = backingArray[(front + size) % backingArray.length];
+            for (int i = 0; i <= size - 1; i++){
+                newArray[i] = backingArray[(front + i) % backingArray.length];
             }
             backingArray = newArray;
             front = 0;
