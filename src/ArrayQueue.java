@@ -69,8 +69,20 @@ public class ArrayQueue<T> {
      * @throws java.util.NoSuchElementException if the queue is empty
      */
     public T dequeue() {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        return null;
+        if (size != 0){
+            return removeFromFront();
+        }
+        else {
+            throw new NoSuchElementException("Error: List must not be empty!");
+        }
+    }
+
+    private T removeFromFront(){
+        T elementToRemove = backingArray[front];
+        backingArray[front] = null;
+        front = (front + 1) % backingArray.length;
+        size--;
+        return elementToRemove;
     }
 
     /**
