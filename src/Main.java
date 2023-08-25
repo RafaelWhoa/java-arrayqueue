@@ -1,5 +1,17 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ArrayQueue<Object> backingArray = new ArrayQueue<>();
+
+        backingArray.enqueue(1);
+        backingArray.enqueue(2);
+        backingArray.enqueue(3);
+
+        for (Object num: backingArray.getBackingArray()){
+            System.out.println(num);
+        }
     }
+
+
 }

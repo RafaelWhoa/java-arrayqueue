@@ -43,7 +43,14 @@ public class ArrayQueue<T> {
      * @throws java.lang.IllegalArgumentException if data is null
      */
     public void enqueue(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        if (data != null){
+            front = 0;
+            addToBack(data);
+        }
+        else {
+            throw new IllegalArgumentException("Error: Data must not be null value!");
+        }
+
     }
 
     /**
@@ -64,6 +71,27 @@ public class ArrayQueue<T> {
     public T dequeue() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
         return null;
+    }
+
+    /**
+     * Add data at back index (front + size)
+     * <p>
+     * If size equals backing array capacity, the array will be resized
+     *
+     * @param data data to be added at back position
+     */
+    private void addToBack(T data){
+        if (size == backingArray.length){
+            T[] newArray = (T[]) new Object[size * 2];
+            for (int i = 0; i < size - 1; i++){
+                newArray[i] = backingArray[i];
+            }
+            newArray[front + size] = data;
+            size++;
+            backingArray = newArray;
+        }
+        backingArray[front + size] = data;
+        size++;
     }
 
     /**
